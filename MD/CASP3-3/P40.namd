@@ -1,0 +1,8 @@
+#!/bin/sh
+
+NAMDPATH=~/NAMD_2.14_Linux-x86_64-multicore-CUDA
+echo Start NAMD run at $(date) on $(hostname)
+sleep 3
+LD_LIBRARY_PATH=$NAMDPATH:$LD_LIBRARY_PATH \
+$NAMDPATH/namd2 +p8 +setcpuaffinity +devices 0 equ1-1.conf > equ1-1.log
+echo Finish NAMD run at $(date) on $(hostname)

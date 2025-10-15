@@ -1,0 +1,41 @@
+topology top_all36_carb.rtf
+topology top_all36_cgenff.rtf
+topology toppar_water_ions.str
+topology top_all36_na.rtf
+topology top_all36_prot.rtf
+topology top_interface.rtf
+topology lig.rtf
+
+resetpsf
+
+pdbalias residue HIS HSD   
+pdbalias residue HOH TIP3
+pdbalias residue CA  CAL
+pdbalias residue TYS TYR
+pdbalias residue SR  CAL
+pdbalias residue UNL  lig
+
+
+pdbalias atom ILE CD1 CD
+pdbalias atom HOH O OH2
+pdbalias atom CA CA CAL
+pdbalias atom SR SR CAL
+
+
+# 加载PDB文件
+segment A {first ACE;
+		pdb pro.pdb
+		last CT3;}
+
+segment C {
+		pdb ligand.pdb
+		}
+
+
+coordpdb pro.pdb A
+coordpdb ligand.pdb C
+
+guesscoord
+
+writepsf CaNi.psf
+writepdb CaNi.pdb
